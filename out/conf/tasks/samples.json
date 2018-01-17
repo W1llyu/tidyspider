@@ -1,0 +1,17 @@
+{
+  "name": "samples",
+  "userAgent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36",
+  "charset": "UTF-8",
+  "retryTimes": 0,
+  "timeOut": 30000,
+  "proxy": false,
+  "acceptStatusCode": [
+    200
+  ],
+  "rules": [
+    {
+      "urlRegex": "https://www\\.csdn\\.net/",
+      "processor": "com.will.tidyspider.samples.csdn.CsdnListPageProcessor"
+    }
+  ]
+}

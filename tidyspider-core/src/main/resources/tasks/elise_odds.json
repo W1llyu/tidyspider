@@ -1,0 +1,81 @@
+{
+  "name": "odds",
+  "userAgent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36",
+  "charset": "UTF-8",
+  "retryTimes": 0,
+  "timeOut": 30000,
+  "proxy": false,
+  "acceptStatusCode": [
+    200
+  ],
+  "rules": [
+    {
+      "urlRegex": "http://esportlivescore\\.com/d_\\d+-\\d+-\\d+_g_[dota|csgo|leagueoflegends]+\\.html",
+      "processor": "com.will.tidyspider.match.source.esportlive.EsportLivePageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.vpgame\\.com/gateway/v1/match/schedule/pc_index",
+      "processor": "com.will.tidyspider.match.dota2.match.vpgame.VpGameMatchProcessor"
+    },
+    {
+      "urlRegex": "http://niugames\\.cc/GameAjax/Game\\.html\\?Status=\\d+&GameType=\\d+&p=\\d+",
+      "processor": "com.will.tidyspider.match.source.niugame.NiuGameDetailPageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.vpgame\\.com/gateway/v1/match/\\?page=1&category=[dota|csgo]+&status=open&limit=20&lang=zh_CN",
+      "processor": "com.will.tidyspider.match.source.vpgame.VpGameListPageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.vpgame\\.com/gateway/v1/match/\\?page=1&category=[dota|csgo]+&status=close&limit=20&lang=zh_CN",
+      "processor": "com.will.tidyspider.match.source.vpgame.VpGameListPageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.vpgame\\.com/gateway/v1/match/schedule\\?lang=zh_CN&category=[dota|csgo]+&tid=\\d+",
+      "processor": "com.will.tidyspider.match.source.vpgame.VpGameDetailPageProcessor"
+    },
+    {
+      "urlRegex": "http://q\\.maxjia\\.com/api/bets/get_match_list_v2/3/\\?lang=zh-cn&bet_type=dota&offset=0&limit=30",
+      "processor": "com.will.tidyspider.match.dota2.odds.dotamax.DotaMaxDetailPageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.dota188\\.com/match/mindex\\.do",
+      "processor": "com.will.tidyspider.match.source.dota188.Dota188DetailPageProcessor"
+    },
+    {
+      "urlRegex": "https://www\\.bocaidj\\.com/guess_pc/html/game/guess_index\\.html\\?type=[dota2|csgo]+",
+      "processor": "com.will.tidyspider.match.source.guess.GuessRequestProcessor"
+    },
+    {
+      "urlRegex": "https://www\\.bocaidj\\.com/api/v507/app\\.php",
+      "processor": "com.will.tidyspider.match.source.guess.GuessDetailProcessor"
+    },
+    {
+      "urlRegex": "https://www\\.pinnacle\\.com/zh-cn/rtn",
+      "processor": "com.will.tidyspider.match.dota2.odds.pinnacle.PinnacleLeaguesListPageProcessor"
+    },
+    {
+      "urlRegex": "https://www\\.pinnacle\\.com/zh-cn/odds/match/e-sports/dota-2/.*",
+      "processor": "com.will.tidyspider.match.dota2.odds.pinnacle.PinacleMatchesListPageProcessor"
+    },
+    {
+      "urlRegex": "https://www\\.pinnacle\\.com/webapi/1\\.15/api/v1/GuestLines/NonLive/\\d+/\\d+",
+      "processor": "com.will.tidyspider.match.dota2.odds.pinnacle.PinacleMatchesDetailPageProcessor"
+    },
+    {
+      "urlRegex": "http://mkt\\.mrtome\\.com/Tennis_data\\.aspx\\?Sport=43&Market=[t|l]+&DT=&RT=W&CT=&Game=0&OddsType=2&MainLeague=0",
+      "processor": "com.will.tidyspider.match.source.mrcat.MrCatDetailPageProcessor"
+    },
+    {
+      "urlRegex": "http://api\\.gbfine\\.com/SportPromotionAPI/API\\.asmx/GetSportLiveOdds_JsonString\\?pwd=52\\.80\\.2\\.78",
+      "processor": "com.will.tidyspider.match.multigames.odds.deying.DeYingPageProcessor"
+    },
+    {
+      "urlRegex": "http://api\\.gbfine\\.com/SportPromotionAPI/API\\.asmx/GetSportPrematchOdds_JsonString\\?pwd=52\\.80\\.2\\.78",
+      "processor": "com.will.tidyspider.match.multigames.odds.deying.DeYingPageProcessor"
+    },
+    {
+      "urlRegex": "http://www\\.wolfbo\\.com/get/match-info\\?source_id=11",
+      "processor": "com.will.tidyspider.match.source.ouresports.OurEsportsPageProcessor"
+    }
+  ]
+}

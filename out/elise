@@ -1,0 +1,61 @@
+#!/bin/sh
+# Description:  start or stop the tidyspider
+# Usage:        tidyspider [start|stop|reload|restart]
+
+classpath='./tidyspider-core.jar'
+for jar in `ls ./libs/*.jar`;
+do
+    classpath=${classpath}:$jar
+done
+
+export CLASSPATH=$classpath:$CLASSPATH
+
+case "$1" in
+
+start)
+    echo "Starting tidyspider service..."
+    pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    if [ ${#pid} -ne 0 ]; then
+        echo "Service is running..."
+        exit -1
+    fi
+
+    java -Dfile.encoding="UTF-8" -ea com.will.tidyspider.core.Launcher &
+
+    pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    while((${#pid}==0))
+    do
+        sleep 1
+        pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    done
+    echo "tidyspider started..."
+
+;;
+stop)
+    echo "Stoping tidyspider service..."
+    pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    if [ ${#pid} -ne 0 ]; then
+        kill -15 $pid
+    else
+        echo "No service found..."
+    fi
+    
+    pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    while((${#pid}>0))
+    do
+        sleep 1
+        pid=`ps -ef | grep "java"  | grep "com.will.tidyspider.core.Launcher" | grep -v grep | awk '{print $2}'`
+    done
+    echo "tidyspider stoped..."
+;;
+reload|restart)
+    $0 stop
+    $0 start
+
+;;
+*)
+    echo "Usage: tidyspider [start|stop|reload|restart]"
+    exit 1
+
+esac
+exit 0

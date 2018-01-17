@@ -1,0 +1,13 @@
+{
+  "concurrency": 10,
+  "sleep_time": 5,
+  "jar_path": "./",
+  "app": {},
+  "components": {
+    "scheduler": "com.will.tidyspider.core.scheduler.RedisScheduler",
+    "downloader": "com.will.tidyspider.core.downloader.OKHTTPDownloader",
+    "collectors": [
+      "com.will.tidyspider.core.collector.RedisCollector"
+    ]
+  }
+}
