@@ -21,6 +21,6 @@ public class SpiderUtil {
         Spider spider = new Spider();
         serverConfig.getScheduler().push(request);
 
-        spider.run();
+        spider.once();
     }
 }

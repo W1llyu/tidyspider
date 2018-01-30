@@ -58,6 +58,23 @@ public class Spider {
         }
     }
 
+    public void once() {
+        while(true) {
+            final Request request = serverConfig.getScheduler().poll();
+            if(null == request) {
+                try {
+                    Thread.sleep(serverConfig.getSleepTime() * 1000);
+                } catch (InterruptedException e) {
+                    break;
+                }
+                continue;
+            } else {
+                processRequest(request);
+                break;
+            }
+        }
+    }
+
     /**
      * 处理请求
      * @param request
