@@ -28,7 +28,7 @@ hs_err_pid*
 */target
 /Plugins/*/target
 /tools/*
-elise_target/*
+target/*
 
 *.iml
 *.ipr
